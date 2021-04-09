@@ -5,7 +5,6 @@ import androidx.room.RoomDatabase;
 
 import com.example.technext.model.Blog;
 import com.example.technext.model.BlogPost;
-
 /**
  * Created by Anik Roy on 4/8/2021.
  */

@@ -93,7 +93,7 @@ public class EditActivity extends AppCompatActivity {
         binding.save.setOnClickListener(v -> {
             Blog blog = new Blog(binding.title.getText().toString(),
                     binding.description.getText().toString(),
-                    "",category,new Author(1,"John Doe","https://i.pravatar.cc/250","Content Writer"));
+                    "https://i.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI",category,new Author(1,"John Doe","https://i.pravatar.cc/250","Content Writer"));
             blog.setId(editBlog.getId());
             blogPostViewModel.updateBlogPost(blog);
         });

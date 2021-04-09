@@ -1,12 +1,11 @@
 package com.example.technext.ui.activity;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-
-import android.os.Bundle;
-import android.widget.Toast;
 
 import com.example.technext.R;
 import com.example.technext.databinding.ActivityAddBlogPostBinding;
@@ -65,14 +64,21 @@ public class AddBlogPost extends AppCompatActivity {
 
         binding.save.setOnClickListener(v -> {
 
+            if (binding.title.getText().toString().trim().equals("")) {
+                binding.title.setError("Type post tile");
+                binding.title.requestFocus();
+            } else if (binding.description.getText().toString().trim().equals("")) {
+                binding.description.setError("Type post description");
+                binding.description.requestFocus();
+            } else {
 
                 Blog blog = new Blog(binding.title.getText().toString(),
                         binding.description.getText().toString(),
-                        "",category,new Author(1,"John Doe","https://i.pravatar.cc/250","Content Writer"));
+                        "https://i.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI", category, new Author(1, "John Doe", "https://i.pravatar.cc/250", "Content Writer"));
 
                 blogPostViewModel.saveBlogPost(blog);
 
-
+            }
         });
 
         blogPostViewModel.getAddResponse().observe(this, new Observer<Boolean>() {
